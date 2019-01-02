@@ -65,4 +65,4 @@ class Crypt(resource.Resource):
             request.setResponseCode(400)
             response_text = b"password not specified"
 
-        return json.dumps({"value": response_text}).encode('utf-8')
+        return json.dumps({"value": response_text.decode('utf-8')}).encode('utf-8')
