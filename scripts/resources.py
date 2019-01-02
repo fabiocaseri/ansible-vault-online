@@ -16,7 +16,11 @@ class Root(static.File):
 class Crypt(resource.Resource):
     isLeaf = True
 
-    def render(self, request):
+    def render_GET(self, request):
+        request.setResponseCode(405)
+        return b"Crypt service accepts only POST requests!"
+
+    def render_POST(self, request):
 
         request.setHeader("Content-Type", "application/json; charset=utf-8")
         version, cipher, vault_id = '1.1', 'AES256', ''
