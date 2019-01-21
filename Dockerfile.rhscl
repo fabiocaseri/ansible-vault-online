@@ -1,0 +1,9 @@
+FROM rhscl/python-36-rhel7
+
+RUN pip install twisted ansible 
+
+ENV PYTHONPATH /opt/app-root/src
+WORKDIR /opt/app-root/src
+COPY . /opt/app-root/src
+
+CMD ["twistd", "--python=/opt/app-root/src/ansible-vault-online.py", "-n", "--rundir=/opt/app-root/src"]
